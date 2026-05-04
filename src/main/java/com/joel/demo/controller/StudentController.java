@@ -1,5 +1,8 @@
 package com.joel.demo.controller;
 
+import com.joel.demo.dto.StudentDTO;
+import jakarta.validation.Valid;
+
 import com.joel.demo.model.Student;
 import com.joel.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +27,19 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
+    @GetMapping("/search")
+    public List<Student> searchByName(@RequestParam String name) {
+        return studentService.searchByName(name);
+    }
+
     @PostMapping
-    public Student addStudent(@RequestBody Student student) {
-        return studentService.addStudent(student);
+    public Student addStudent(@Valid @RequestBody StudentDTO dto) {
+        return studentService.addStudent(dto);
     }
 
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable int id, @RequestBody Student student) {
-        return studentService.updateStudent(id, student);
+    public Student updateStudent(@PathVariable int id,
+                                 @Valid @RequestBody StudentDTO dto) {
+        return studentService.updateStudent(id, dto);
     }
 }
