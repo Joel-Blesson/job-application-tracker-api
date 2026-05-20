@@ -1,21 +1,29 @@
 package com.joel.demo.controller;
 
 import com.joel.demo.model.User;
+import com.joel.demo.security.JwtUtil;
 import com.joel.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    private final JwtUtil jwtUtil;
+
+    public AuthController(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
 
     // 🔹 Register
     @PostMapping("/register")
     public String register(@RequestBody User user) {
+
         userService.register(user);
+
         return "User registered successfully";
     }
 
@@ -25,6 +33,6 @@ public class AuthController {
 
         userService.login(user.getUsername(), user.getPassword());
 
-        return "Login successful";
+        return jwtUtil.generateToken(user.getUsername());
     }
 }

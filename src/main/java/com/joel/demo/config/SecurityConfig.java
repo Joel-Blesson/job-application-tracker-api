@@ -13,10 +13,13 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
+
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // allow auth endpoints
-                        .anyRequest().permitAll() // allow everything for now
-                );
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+
+                .formLogin(form -> form.disable());
 
         return http.build();
     }
