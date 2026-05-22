@@ -13,12 +13,13 @@ public class AuthController {
 
     private final JwtUtil jwtUtil;
 
-    public AuthController(UserService userService, JwtUtil jwtUtil) {
+    public AuthController(UserService userService,
+                          JwtUtil jwtUtil) {
+
         this.userService = userService;
         this.jwtUtil = jwtUtil;
     }
 
-    // 🔹 Register
     @PostMapping("/register")
     public String register(@RequestBody User user) {
 
@@ -27,7 +28,6 @@ public class AuthController {
         return "User registered successfully";
     }
 
-    // 🔹 Login
     @PostMapping("/login")
     public String login(@RequestBody User user) {
 

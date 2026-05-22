@@ -17,11 +17,19 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobApplication createJob(JobApplication jobApplication) {
+
         return jobRepository.save(jobApplication);
     }
 
     @Override
     public List<JobApplication> getAllJobs() {
+
         return jobRepository.findAll();
+    }
+
+    @Override
+    public List<JobApplication> getJobsByStatus(String status) {
+
+        return jobRepository.findByStatus(status);
     }
 }

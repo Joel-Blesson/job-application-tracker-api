@@ -9,4 +9,6 @@ public interface JobService {
     JobApplication createJob(JobApplication jobApplication);
 
     List<JobApplication> getAllJobs();
+
+    List<JobApplication> getJobsByStatus(String status);
 }

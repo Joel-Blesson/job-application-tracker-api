@@ -17,12 +17,22 @@ public class JobController {
     }
 
     @PostMapping
-    public JobApplication createJob(@RequestBody JobApplication jobApplication) {
+    public JobApplication createJob(
+            @RequestBody JobApplication jobApplication) {
+
         return jobService.createJob(jobApplication);
     }
 
     @GetMapping
     public List<JobApplication> getAllJobs() {
+
         return jobService.getAllJobs();
+    }
+
+    @GetMapping("/status/{status}")
+    public List<JobApplication> getJobsByStatus(
+            @PathVariable String status) {
+
+        return jobService.getJobsByStatus(status);
     }
 }
