@@ -11,4 +11,8 @@ public interface JobService {
     List<JobApplication> getAllJobs();
 
     List<JobApplication> getJobsByStatus(String status);
+
+    JobApplication updateJob(Integer id, JobApplication updatedJob);
+
+    void deleteJob(Integer id);
 }

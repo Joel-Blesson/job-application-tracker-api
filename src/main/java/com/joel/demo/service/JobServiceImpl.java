@@ -17,19 +17,38 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobApplication createJob(JobApplication jobApplication) {
-
         return jobRepository.save(jobApplication);
     }
 
     @Override
     public List<JobApplication> getAllJobs() {
-
         return jobRepository.findAll();
     }
 
     @Override
     public List<JobApplication> getJobsByStatus(String status) {
-
         return jobRepository.findByStatus(status);
+    }
+
+    @Override
+    public JobApplication updateJob(Integer id, JobApplication updatedJob) {
+
+        JobApplication existingJob = jobRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+
+        existingJob.setCompany(updatedJob.getCompany());
+        existingJob.setRole(updatedJob.getRole());
+        existingJob.setStatus(updatedJob.getStatus());
+
+        return jobRepository.save(existingJob);
+    }
+
+    @Override
+    public void deleteJob(Integer id) {
+
+        JobApplication existingJob = jobRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+
+        jobRepository.delete(existingJob);
     }
 }
