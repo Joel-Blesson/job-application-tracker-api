@@ -34,7 +34,7 @@ public class JobServiceImpl implements JobService {
     public JobApplication updateJob(Integer id, JobApplication updatedJob) {
 
         JobApplication existingJob = jobRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
+                .orElseThrow(() -> new RuntimeException("Job with id" + id + " not found"));
 
         existingJob.setCompany(updatedJob.getCompany());
         existingJob.setRole(updatedJob.getRole());
@@ -47,7 +47,7 @@ public class JobServiceImpl implements JobService {
     public void deleteJob(Integer id) {
 
         JobApplication existingJob = jobRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
+                .orElseThrow(() -> new RuntimeException(" Job with id + id +  not found"));
 
         jobRepository.delete(existingJob);
     }
