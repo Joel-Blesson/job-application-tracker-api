@@ -9,4 +9,8 @@ public interface JobRepository
         extends JpaRepository<JobApplication, Integer> {
 
     List<JobApplication> findByStatus(String status);
+
+    List<JobApplication> findByCompanyContainingIgnoreCase(String company);
+
+    List<JobApplication> findByRoleContainingIgnoreCase(String role);
 }

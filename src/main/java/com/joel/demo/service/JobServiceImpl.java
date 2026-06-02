@@ -51,4 +51,16 @@ public class JobServiceImpl implements JobService {
 
         jobRepository.delete(existingJob);
     }
+
+    @Override
+    public List<JobApplication> searchByCompany(String company) {
+        return jobRepository.findByCompanyContainingIgnoreCase(company);
+    }
+
+    @Override
+    public List<JobApplication> searchByRole(String role) {
+        return jobRepository.findByRoleContainingIgnoreCase(role);
+    }
+
+
 }

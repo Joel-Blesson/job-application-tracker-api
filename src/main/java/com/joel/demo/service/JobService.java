@@ -15,4 +15,8 @@ public interface JobService {
     JobApplication updateJob(Integer id, JobApplication updatedJob);
 
     void deleteJob(Integer id);
+
+    List<JobApplication> searchByCompany(String company);
+
+    List<JobApplication> searchByRole(String role);
 }

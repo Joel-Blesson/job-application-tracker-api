@@ -26,11 +26,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, Object>handleGeneric(Exception ex){
+    public Map<String, Object> handleGeneric(Exception ex) {
 
         Map<String, Object> error = new HashMap<>();
-        error.put("message", "Something went wrong");
-        error.put("status",500);
+        error.put("message", ex.getMessage());
+        error.put("status", 500);
+
+        ex.printStackTrace();
 
         return error;
     }

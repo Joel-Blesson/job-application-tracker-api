@@ -37,6 +37,13 @@ public class JobController {
         return jobService.getJobsByStatus(status);
     }
 
+    @GetMapping("/search")
+    public List<JobApplication> searchByCompany(
+            @RequestParam String company) {
+
+        return jobService.searchByCompany(company);
+    }
+
     @PutMapping("/{id}")
     public JobApplication updateJob(
             @PathVariable Integer id,

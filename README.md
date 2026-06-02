@@ -4,21 +4,34 @@ A Spring Boot REST API for managing job applications.
 
 ## Features
 
-* JWT Authentication
-* Spring Security
-* BCrypt Password Hashing
-* CRUD Operations
-* Job Status Filtering
-* Validation & Exception Handling
+### Authentication
+- User Registration
+- User Login
+- BCrypt Password Hashing
+- JWT Token Generation
+
+### Job Management
+- Create Job
+- Get All Jobs
+- Update Job
+- Delete Job
+- Filter By Status
+- Search By Company
+
+### Validation
+- DTO Validation
+- Global Exception Handling
 
 ## Tech Stack
 
-* Java 17
-* Spring Boot
-* Spring Security
-* Spring Data JPA
-* MySQL
-* Maven
+- Java 17
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- H2 Database
+- JWT
+- Maven
+- Git/GitHub
 
 ## Endpoints
 
